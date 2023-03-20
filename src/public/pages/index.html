@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link type="text/css" rel="stylesheet" href='/styles/css/bootstrap.min.css'>
+    <style>
+        #Loginform {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: inherit;
+            display: flex;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <form id="Loginform">
+        <input type="text" id="getName" class="form-control" placeholder="Adınız" required>
+        <button class="btn btn-success" style="display: block;">Giriş</button>
+    </form>
+
+    <script>
+
+        const LoginForm = document.getElementById("Loginform");
+        const LoginInput = document.getElementById("getName");
+        LoginInput.focus();
+
+        LoginForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            if (characterValidControl(LoginInput.value) || LoginInput.value.length > 20) {
+                alert("Girilen ad formatı yanlış");
+                LoginInput.value = "";
+                LoginInput.focus();
+                return;
+            }
+
+            sessionStorage.setItem("username", LoginInput.value);
+            location.href = "pages/chat.html";
+        });
+
+        function characterValidControl(str) {
+            const format = /[ `!@#$%^&*()_+\-=\[\]{};' :"\\|,.<>\/?~]/;
+
+            return format.test(str);
+        }
+    </script>
+</body>
+
+</html>

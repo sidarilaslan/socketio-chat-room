@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 20px;
+}
+
+#activeUser {
+    color: green;
+    float: right;
+}
+
+#getName {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: inherit;
+}
+
+.writing {
+    font-weight: bold;
+}
+
+.log {
+    text-align: center;
+    font-weight: bold;
+    margin: 15px;
+}
+
+#messageArea {
+    --rad: 20px;
+    --rad-sm: 3px;
+    font: 16px/1.5 sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 10px 0;
+}
+
+.userJoined {
+    text-align: center;
+    margin: 15px;
+
+    span {
+        background-color: rgb(176, 255, 229);
+        padding: 10px;
+        border-radius: 10px;
+        font-weight: bold;
+
+    }
+}
+
+.userleft {
+
+    text-align: center;
+    margin: 15px;
+
+    span {
+        background-color: rgb(255, 152, 174);
+        padding: 10px;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+}
+
+.userTitle {
+    font-weight: bold;
+}
+
+.msg {
+    position: relative;
+    max-width: 75%;
+    padding: 7px 15px;
+    margin-bottom: 2px;
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.sendTime {
+    text-align: end;
+    font-size: 9px;
+    font-weight: lighter;
+}
+
+.msg.sent {
+    border-radius: var(--rad) var(--rad-sm) var(--rad-sm) var(--rad);
+    background: #42a5f5;
+    color: #fff;
+    margin-left: auto;
+}
+
+.msg.rcvd {
+    border-radius: var(--rad-sm) var(--rad) var(--rad) var(--rad-sm);
+    background: #f1f1f1;
+    color: #555;
+    margin-right: auto;
+}
+
+
+.msg.sent:first-child,
+.msg.rcvd+.msg.sent {
+    border-top-right-radius: var(--rad);
+}
+
+.msg.rcvd:first-child,
+.msg.sent+.msg.rcvd {
+    border-top-left-radius: var(--rad);
+}
